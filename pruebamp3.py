@@ -16,15 +16,16 @@ def texts(texto):
    screen.fill((0, 0, 0))
    screen.blit(text, textrect)
    pygame.display.flip()
-texts("en marcha")
+#texts("en marcha")
 pygame.mixer.music.play()
 
+loop = True
 
-while True: #pygame.mixer.music.get_busy() == True:
+while loop: #pygame.mixer.music.get_busy() == True:
 #    print "while"
 #    texts("while")
     for event in pygame.event.get():
-	print event	
+#	print event	
 	if event.type == KEYDOWN:
 		if event.key == K_p:
 	    	    texts("playing")
@@ -32,4 +33,8 @@ while True: #pygame.mixer.music.get_busy() == True:
 		if event.key == K_s:
 		    texts("stop")
 		    pygame.mixer.music.stop()
-    time.sleep(0.005)
+		    pygame.mixer.init()
+		    pygame.mixer.music.load("2.mp3")
+		if event.key == K_q:
+		    loop = False
+#    time.sleep(0.005)
