@@ -7,7 +7,7 @@ screen = pygame.display.set_mode((800, 400), 0, 32)
 pygame.mixer.init()
 pygame.mixer.music.load("2.mp3")
 print "music loaded"
-sound = pygame.mixer.Sound("2.wav")
+sound = pygame.mixer.Sound("1.wav")
 print "sound loaded"
 def texts(texto):
    font=pygame.font.SysFont(None ,32)
