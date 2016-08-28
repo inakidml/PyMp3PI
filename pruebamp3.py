@@ -1,14 +1,10 @@
+
 import pygame
 from pygame.locals import *
+import RPi.GPIO as GPIO
 import time
-pygame.init()
-#pygame.display.set_caption("")
-screen = pygame.display.set_mode((800, 400), 0, 32)
-pygame.mixer.init()
-pygame.mixer.music.load("2.mp3")
-print "music loaded"
-sound = pygame.mixer.Sound("1.wav")
-print "sound loaded"
+
+
 def texts(texto):
    font=pygame.font.SysFont(None ,32)
    text=font.render(texto, True,(255,255,255))
@@ -19,28 +15,45 @@ def texts(texto):
    screen.blit(text, textrect)
    pygame.display.flip()
 #texts("en marcha")
-pygame.mixer.music.play()
-print "playing music"
+
+def play():
+   texts("playing sound")
+   sound.play()
+#    texts("playing music")
+#    pygame.mixer.music.play()
+
+def stop():
+    texts("stop")
+    sound.stop()
+#    pygame.mixer.music.stop()
+#    pygame.mixer.init()
+#    pygame.mixer.music.load("2.mp3")
+
+
+pygame.init()
+pygame.display.set_caption("PyMp3PI")
+screen = pygame.display.set_mode((800, 800), 0, 32)
+pygame.mixer.init()
+#pygame.mixer.music.load("2.mp3")
+#print "music loaded"
+sound = pygame.mixer.Sound("1.wav")
+#print "sound loaded"
+#pygame.mixer.music.play()
+#print "playing music"
 loop = True
 
 while loop: #pygame.mixer.music.get_busy() == True:
 #    print "while"
 #    texts("while")
     for event in pygame.event.get():
-#	print event	
-	if event.type == KEYDOWN:
-		if event.key == K_p:
-	    	    texts("playing music")
-		    pygame.mixer.music.play()
-		if event.key == K_o:
-	    	    texts("playing sound")
-		    sound.play()
-		if event.key == K_s:
-		    texts("stop")
-		    sound.stop()
-		    pygame.mixer.music.stop()
-		    pygame.mixer.init()
-		    pygame.mixer.music.load("2.mp3")
-		if event.key == K_q:
-		    loop = False
+#       print event     
+        if event.type == KEYDOWN:
+                if event.key == K_p:
+                    play()
+                if event.key == K_s:
+                    stop()
+                if event.key == K_q:
+                    loop = False
     time.sleep(0.005)
+
+
