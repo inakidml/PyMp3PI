@@ -36,7 +36,7 @@ def mi_callback(pin):
     GPIO.add_event_detect(18, GPIO.RISING, callback=mi_callback, bouncetime=200)
 	
 GPIO.setmode(GPIO.BOARD)# Ponemos la placa en modo BOARD -> identificacion de los pimes por numero de pin del conector(no puerto GPIO)
-GPIO.setup(18, GPIO.IN, GPIO.PUD_UP)# Configuramos el pin 18 (GPIO 24) como entrada y resistencia pull down -> Pulsador entre pin y masa (Pull Up pulsador entre +3.3v y pin)
+GPIO.setup(18, GPIO.IN, GPIO.PUD_UP)# Configuramos el pin 18 (GPIO 24) como entrada y resistencia pull UP -> Pulsador entre pin y masa (Pull Down pulsador entre +3.3v y pin)
 # Configuramos una interrupcion para cuando se aprete el boton
 GPIO.add_event_detect(18, GPIO.RISING, callback=mi_callback, bouncetime=200)
 
