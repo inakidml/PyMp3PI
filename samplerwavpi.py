@@ -42,7 +42,7 @@ GPIO.add_event_detect(18, GPIO.RISING, callback=mi_callback, bouncetime=200)
 
 pygame.init()
 pygame.display.set_caption("PyMp3PI")
-screen = pygame.display.set_mode((800, 800), 0, 32)
+screen = pygame.display.set_mode((300, 300), 0, 32)
 pygame.mixer.init()
 #pygame.mixer.music.load("2.mp3")
 #print "music loaded"
